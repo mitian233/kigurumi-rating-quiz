@@ -82,7 +82,7 @@ export async function GET(
     });
 
     return NextResponse.json(
-      responses.map((response) => ({
+      responses.map((response: any) => ({
         id: response.id,
         testerName: response.testerName,
         answers: JSON.parse(response.answers),

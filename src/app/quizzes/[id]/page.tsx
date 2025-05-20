@@ -175,7 +175,7 @@ export default function QuizDetailPage({ params }: { params: Promise<{ id: strin
               <div className="mt-2">
                 <p>参与者: </p>
                 <div className="flex flex-wrap gap-2 mt-1">
-                  {quiz.responses.map((response) => (
+                  {quiz.responses.map((response: any) => (
                     <span
                       key={response.id}
                       className="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full"

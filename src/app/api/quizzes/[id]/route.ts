@@ -30,7 +30,7 @@ export async function GET(
       isActive: quiz.isActive,
       creatorId: quiz.creatorId,
       config: JSON.parse(quiz.config),
-      responses: quiz.responses.map((response) => ({
+      responses: quiz.responses.map((response: any) => ({
         id: response.id,
         testerName: response.testerName,
         answers: JSON.parse(response.answers),
