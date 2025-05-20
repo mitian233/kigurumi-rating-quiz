@@ -26,7 +26,7 @@ export async function GET(
 
     const config = JSON.parse(quiz.config);
     const responses = quiz.responses.map(
-      (response) => JSON.parse(response.answers) as QuizResponse
+      (response: any) => JSON.parse(response.answers) as QuizResponse
     );
 
     if (responses.length === 0) {
