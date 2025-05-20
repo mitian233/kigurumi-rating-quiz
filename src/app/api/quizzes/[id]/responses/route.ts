@@ -4,10 +4,9 @@ import { prisma } from "@/lib/prisma";
 // Submit a response to a quiz
 export async function POST(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
-  const unwrappedParams = await params;
-  const { id } = unwrappedParams;
+  const { id } = await params;
 
   try {
     const body = await request.json();
@@ -67,11 +66,10 @@ export async function POST(
 
 // Get all responses for a quiz
 export async function GET(
-  request: NextRequest,
-  { params }: { params: { id: string } }
+  _request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
 ) {
-  const unwrappedParams = await params;
-  const { id } = unwrappedParams;
+  const { id } = await params;
 
   try {
     const responses = await prisma.response.findMany({

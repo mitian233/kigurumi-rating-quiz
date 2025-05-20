@@ -16,7 +16,7 @@ interface Quiz {
   config: QuizConfig;
 }
 
-export default function QuizParticipatePage({ params }: { params: { id: string } }) {
+export default function QuizParticipatePage({ params }: { params: Promise<{ id: string }> }) {
   // Unwrap params using React.use()
   const unwrappedParams = use(params);
   const id = unwrappedParams.id;

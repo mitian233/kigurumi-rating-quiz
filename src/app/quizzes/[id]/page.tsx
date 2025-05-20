@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/Button';
 import { formatDate, safeToFixed } from '@/lib/utils';
 import { QuizWithResponses, QuizResult } from '@/types/quiz';
 
-export default function QuizDetailPage({ params }: { params: { id: string } }) {
+export default function QuizDetailPage({ params }: { params: Promise<{ id: string }> }) {
   // Unwrap params using React.use()
   const unwrappedParams = use(params);
   const id = unwrappedParams.id;

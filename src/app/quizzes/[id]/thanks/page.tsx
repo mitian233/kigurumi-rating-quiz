@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
 import { use } from 'react';
 
-export default function ThanksPage({ params }: { params: { id: string } }) {
+export default function ThanksPage({ params }: { params: Promise<{ id: string }> }) {
   // Unwrap params using React.use()
   const unwrappedParams = use(params);
   const id = unwrappedParams.id;

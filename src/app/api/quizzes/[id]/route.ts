@@ -3,11 +3,10 @@ import { prisma } from "@/lib/prisma";
 
 // Get a specific quiz by ID
 export async function GET(
-  request: NextRequest,
-  { params }: { params: { id: string } }
+  _request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
 ) {
-  const unwrappedParams = await params;
-  const { id } = unwrappedParams;
+  const { id } = await params;
 
   try {
     const quiz = await prisma.quiz.findUnique({
@@ -50,10 +49,9 @@ export async function GET(
 // Update a quiz
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
-  const unwrappedParams = await params;
-  const { id } = unwrappedParams;
+  const { id } = await params;
 
   try {
     const body = await request.json();
@@ -91,11 +89,10 @@ export async function PATCH(
 
 // Delete a quiz
 export async function DELETE(
-  request: NextRequest,
-  { params }: { params: { id: string } }
+  _request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
 ) {
-  const unwrappedParams = await params;
-  const { id } = unwrappedParams;
+  const { id } = await params;
 
   try {
     await prisma.quiz.delete({

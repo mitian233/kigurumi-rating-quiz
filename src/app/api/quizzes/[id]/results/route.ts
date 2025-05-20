@@ -5,11 +5,10 @@ import { QuizResponse } from "@/types/quiz";
 
 // Get aggregated results for a quiz
 export async function GET(
-  request: NextRequest,
-  { params }: { params: { id: string } }
+  _request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
 ) {
-  const unwrappedParams = await params;
-  const { id } = unwrappedParams;
+  const { id } = await params;
 
   try {
     const quiz = await prisma.quiz.findUnique({
